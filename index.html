@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="패션 트렌드와 코디 팁을 전달하는 트렌드레터">
+  <title>트렌드레터 — 패션 트렌드 & 코디 팁</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Apple SD Gothic Neo', sans-serif;
+      background-color: #fafafa;
+      color: #222;
+    }
+
+    header {
+      background-color: #222;
+      color: white;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      font-size: 22px;
+      letter-spacing: 2px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 24px;
+      font-size: 14px;
+    }
+
+    nav a:hover { text-decoration: underline; }
+
+    .hero {
+      background-color: #222;
+      color: white;
+      text-align: center;
+      padding: 80px 20px;
+    }
+
+    .hero h2 {
+      font-size: 36px;
+      margin-bottom: 16px;
+      letter-spacing: 1px;
+    }
+
+    .hero p {
+      font-size: 16px;
+      color: #aaa;
+    }
+
+    .posts {
+      max-width: 900px;
+      margin: 60px auto;
+      padding: 0 20px;
+    }
+
+    .posts h3 {
+      font-size: 20px;
+      margin-bottom: 32px;
+      border-bottom: 2px solid #222;
+      padding-bottom: 12px;
+    }
+
+    .post-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+
+    .post-card {
+      background: white;
+      border-radius: 12px;
+      padding: 24px;
+      width: calc(33% - 16px);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      text-decoration: none;
+      color: #222;
+      transition: transform 0.2s;
+    }
+
+    .post-card:hover { transform: translateY(-4px); }
+
+    .post-card .tag {
+      font-size: 12px;
+      color: white;
+      background-color: #222;
+      padding: 4px 10px;
+      border-radius: 20px;
+      display: inline-block;
+      margin-bottom: 12px;
+    }
+
+    .post-card h4 {
+      font-size: 16px;
+      margin-bottom: 8px;
+      line-height: 1.5;
+    }
+
+    .post-card p {
+      font-size: 13px;
+      color: #888;
+      line-height: 1.6;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      font-size: 13px;
+      color: #aaa;
+      border-top: 1px solid #eee;
+      margin-top: 60px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>TRENDLETTER</h1>
+    <nav>
+      <a href="index.html">홈</a>
+      <a href="about.html">소개</a>
+      <a href="privacy.html">개인정보처리방침</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <h2>패션 트렌드 & 코디 팁</h2>
+    <p>시즌별 트렌드와 실용적인 스타일 가이드를 전달합니다</p>
+  </div>
+
+  <div class="posts">
+    <h3>최신 글</h3>
+    <div class="post-grid">
+
+      <a href="posts/post1.html" class="post-card">
+        <span class="tag">트렌드</span>
+        <h4>2025 봄 패션 트렌드 총정리</h4>
+        <p>이번 시즌 주목해야 할 컬러와 실루엣을 정리했습니다.</p>
+      </a>
+
+      <a href="posts/post2.html" class="post-card">
+        <span class="tag">코디 팁</span>
+        <h4>출근룩 5가지 황금 공식</h4>
+        <p>매일 아침 고민 없이 완성하는 오피스 코디 가이드.</p>
+      </a>
+
+      <a href="posts/post3.html" class="post-card">
+        <span class="tag">기초</span>
+        <h4>옷 잘 입는 사람들의 공통점</h4>
+        <p>스타일리스트가 말하는 패션 센스의 진짜 비밀.</p>
+      </a>
+
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2025 TRENDLETTER. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
