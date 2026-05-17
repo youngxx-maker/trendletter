@@ -13,6 +13,9 @@
       font-family: 'Apple SD Gothic Neo', sans-serif;
       background-color: #fafafa;
       color: #222;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
     }
 
     header {
@@ -22,6 +25,9 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
 
     header h1 {
@@ -29,37 +35,82 @@
       letter-spacing: 2px;
     }
 
-    nav a {
+    header nav a {
       color: white;
       text-decoration: none;
       margin-left: 24px;
       font-size: 14px;
     }
 
-    nav a:hover { text-decoration: underline; }
+    .main-wrapper {
+      display: flex;
+      flex: 1;
+      max-width: 1400px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .sidebar {
+      width: 240px;
+      padding: 60px 40px;
+      position: sticky;
+      top: 66px;
+      height: calc(100vh - 66px);
+      border-right: 1px solid #eee;
+    }
+
+    .sidebar h3 {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 24px;
+      color: #888;
+    }
+
+    .sidebar nav {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .sidebar nav a {
+      text-decoration: none;
+      color: #222;
+      font-size: 16px;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .sidebar nav a:hover {
+      color: #888;
+    }
+
+    .content-area {
+      flex: 1;
+      padding: 60px 40px;
+    }
 
     .hero {
-      background-color: #222;
-      color: white;
+      background-color: #f0f0f0;
+      color: #222;
       text-align: center;
-      padding: 80px 20px;
+      padding: 60px 20px;
+      border-radius: 12px;
+      margin-bottom: 60px;
     }
 
     .hero h2 {
-      font-size: 36px;
-      margin-bottom: 16px;
-      letter-spacing: 1px;
+      font-size: 32px;
+      margin-bottom: 12px;
     }
 
     .hero p {
-      font-size: 16px;
-      color: #aaa;
+      font-size: 15px;
+      color: #666;
     }
 
     .posts {
-      max-width: 900px;
-      margin: 60px auto;
-      padding: 0 20px;
+      margin-bottom: 80px;
     }
 
     .posts h3 {
@@ -70,43 +121,48 @@
     }
 
     .post-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 24px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 32px;
     }
 
     .post-card {
       background: white;
       border-radius: 12px;
       padding: 24px;
-      width: calc(33% - 16px);
-      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.04);
       text-decoration: none;
       color: #222;
-      transition: transform 0.2s;
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: flex;
+      flex-direction: column;
     }
 
-    .post-card:hover { transform: translateY(-4px); }
+    .post-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    }
 
     .post-card .tag {
-      font-size: 12px;
+      font-size: 11px;
       color: white;
       background-color: #222;
       padding: 4px 10px;
       border-radius: 20px;
       display: inline-block;
-      margin-bottom: 12px;
+      margin-bottom: 16px;
+      align-self: flex-start;
     }
 
     .post-card h4 {
-      font-size: 16px;
-      margin-bottom: 8px;
-      line-height: 1.5;
+      font-size: 18px;
+      margin-bottom: 12px;
+      line-height: 1.4;
     }
 
     .post-card p {
-      font-size: 13px;
-      color: #888;
+      font-size: 14px;
+      color: #666;
       line-height: 1.6;
     }
 
@@ -116,29 +172,29 @@
       font-size: 13px;
       color: #aaa;
       border-top: 1px solid #eee;
-      margin-top: 60px;
     }
-    @media (max-width: 768px) {
-  header {
-    padding: 16px 20px;
-  }
-  header h1 {
-    font-size: 18px;
-  }
-  nav a {
-    margin-left: 12px;
-    font-size: 13px;
-  }
-  .hero {
-    padding: 50px 20px;
-  }
-  .hero h2 {
-    font-size: 24px;
-  }
-  .post-card {
-    width: 100%;
-  }
-}
+
+    @media (max-width: 900px) {
+      .main-wrapper {
+        flex-direction: column;
+      }
+      .sidebar {
+        width: 100%;
+        height: auto;
+        padding: 20px;
+        position: static;
+        border-right: none;
+        border-bottom: 1px solid #eee;
+      }
+      .sidebar nav {
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      .content-area {
+        padding: 40px 20px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -147,72 +203,100 @@
     <h1>TRENDLETTER</h1>
     <nav>
       <a href="index.html">홈</a>
-      <a href="#basic">베이직</a>
-      <a href="#trend">트렌드</a>
-      <a href="#style-tip">스타일 팁</a>
+      <a href="about.html">소개</a>
+      <a href="privacy.html">개인정보처리방침</a>
     </nav>
   </header>
 
-  <div class="hero">
-    <h2>패션 트렌드 & 코디 팁</h2>
-    <p>시즌별 트렌드와 실용적인 스타일 가이드를 전달합니다</p>
-  </div>
+  <div class="main-wrapper">
+    <aside class="sidebar">
+      <h3>Categories</h3>
+      <nav>
+        <a href="#basic">베이직</a>
+        <a href="#trend">트렌드</a>
+        <a href="#style-tip">스타일 팁</a>
+      </nav>
+    </aside>
 
-  <div class="posts" id="trend">
-    <h3>시즌별 트렌드</h3>
-    <div class="post-grid">
-      <a href="posts/post7.html" class="post-card">
-        <span class="tag">트렌드</span>
-        <h4>2026 봄 패션 트렌드 총정리</h4>
-        <p>새로운 시즌, 실용성과 로맨티시즘의 조화로운 트렌드.</p>
-      </a>
+    <main class="content-area">
+      <div class="hero">
+        <h2>패션 트렌드 & 코디 팁</h2>
+        <p>시즌별 트렌드와 실용적인 스타일 가이드를 전달합니다</p>
+      </div>
 
-      <a href="posts/post6.html" class="post-card">
-        <span class="tag">트렌드</span>
-        <h4>2025 겨울 패션 트렌드</h4>
-        <p>보온성과 스타일을 모두 잡은 윈터 럭셔리 룩 가이드.</p>
-      </a>
+      <div class="posts" id="basic">
+        <h3>베이직 패션</h3>
+        <div class="post-grid">
+          <a href="posts/post8.html" class="post-card">
+            <span class="tag">기초</span>
+            <h4>내 체형에 맞는 황금 비율 코디법</h4>
+            <p>단점을 보완하고 장점을 살리는 체형별 스타일링 공식.</p>
+          </a>
+          <a href="posts/post9.html" class="post-card">
+            <span class="tag">기초</span>
+            <h4>오래 입는 옷 관리법: 소재별 가이드</h4>
+            <p>아끼는 옷을 새 옷처럼 유지하는 세탁 및 보관 비결.</p>
+          </a>
+          <a href="posts/post3.html" class="post-card">
+            <span class="tag">기초</span>
+            <h4>옷 잘 입는 사람들의 공통점</h4>
+            <p>스타일리스트가 말하는 패션 센스의 진짜 비밀.</p>
+          </a>
+        </div>
+      </div>
 
-      <a href="posts/post5.html" class="post-card">
-        <span class="tag">트렌드</span>
-        <h4>2025 가을 패션 트렌드</h4>
-        <p>깊이 있는 컬러와 현대적인 실루엣의 가을 코디.</p>
-      </a>
+      <div class="posts" id="trend">
+        <h3>시즌별 트렌드</h3>
+        <div class="post-grid">
+          <a href="posts/post7.html" class="post-card">
+            <span class="tag">트렌드</span>
+            <h4>2026 봄 패션 트렌드 총정리</h4>
+            <p>새로운 시즌, 실용성과 로맨티시즘의 조화로운 트렌드.</p>
+          </a>
+          <a href="posts/post6.html" class="post-card">
+            <span class="tag">트렌드</span>
+            <h4>2025 겨울 패션 트렌드</h4>
+            <p>보온성과 스타일을 모두 잡은 윈터 럭셔리 룩 가이드.</p>
+          </a>
+          <a href="posts/post5.html" class="post-card">
+            <span class="tag">트렌드</span>
+            <h4>2025 가을 패션 트렌드</h4>
+            <p>깊이 있는 컬러와 현대적인 실루엣의 가을 코디.</p>
+          </a>
+          <a href="posts/post4.html" class="post-card">
+            <span class="tag">트렌드</span>
+            <h4>2025 여름 패션 트렌드</h4>
+            <p>도심에서도 즐길 수 있는 감각적인 여름 스타일링.</p>
+          </a>
+          <a href="posts/post1.html" class="post-card">
+            <span class="tag">트렌드</span>
+            <h4>2025 봄 패션 트렌드</h4>
+            <p>이번 시즌 주목해야 할 컬러와 실루엣 정리.</p>
+          </a>
+        </div>
+      </div>
 
-      <a href="posts/post4.html" class="post-card">
-        <span class="tag">트렌드</span>
-        <h4>2025 여름 패션 트렌드</h4>
-        <p>도심에서도 즐길 수 있는 감각적인 여름 스타일링.</p>
-      </a>
-
-      <a href="posts/post1.html" class="post-card">
-        <span class="tag">트렌드</span>
-        <h4>2025 봄 패션 트렌드</h4>
-        <p>이번 시즌 주목해야 할 컬러와 실루엣 정리.</p>
-      </a>
-    </div>
-  </div>
-
-  <div class="posts" id="style-tip" style="margin-top: 0;">
-    <h3>스타일 팁</h3>
-    <div class="post-grid">
-      <a href="posts/post2.html" class="post-card">
-        <span class="tag">코디 팁</span>
-        <h4>출근룩 5가지 황금 공식</h4>
-        <p>매일 아침 고민 없이 완성하는 오피스 코디 가이드.</p>
-      </a>
-    </div>
-  </div>
-
-  <div class="posts" id="basic" style="margin-top: 0;">
-    <h3>베이직 패션</h3>
-    <div class="post-grid">
-      <a href="posts/post3.html" class="post-card">
-        <span class="tag">기초</span>
-        <h4>옷 잘 입는 사람들의 공통점</h4>
-        <p>스타일리스트가 말하는 패션 센스의 진짜 비밀.</p>
-      </a>
-    </div>
+      <div class="posts" id="style-tip">
+        <h3>스타일 팁</h3>
+        <div class="post-grid">
+          <a href="posts/post10.html" class="post-card">
+            <span class="tag">코디 팁</span>
+            <h4>실패 없는 톤온톤 매치 공식</h4>
+            <p>세련된 분위기를 연출하는 컬러 스타일링의 모든 것.</p>
+          </a>
+          <a href="posts/post11.html" class="post-card">
+            <span class="tag">코디 팁</span>
+            <h4>코디의 완성도를 높이는 액세서리 활용법</h4>
+            <p>평범한 룩을 특별하게 만드는 디테일의 힘.</p>
+          </a>
+          <a href="posts/post2.html" class="post-card">
+            <span class="tag">코디 팁</span>
+            <h4>출근룩 5가지 황금 공식</h4>
+            <p>매일 아침 고민 없이 완성하는 오피스 코디 가이드.</p>
+          </a>
+        </div>
+      </div>
+    </main>
   </div>
 
   <footer>
